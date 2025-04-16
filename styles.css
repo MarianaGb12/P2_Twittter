@@ -1,0 +1,255 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(40, 39, 39);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #1da1f2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1991da;
+}
+
+
+/* Estilos index */
+.landing-page {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.x-logo {
+    width: 300px;
+    height: auto;
+}
+
+.content-section {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 48px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: bold;
+}
+
+.auth-buttons {
+    max-width: 300px;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 20px;
+    border: 1px solid #536471;
+    background: white;
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.auth-button img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+
+.create-account {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    background-color: #1d9bf0;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.create-account:hover {
+    background-color: #1a8cd8;
+}
+
+.terms {
+    font-size: 13px;
+    color: #536471;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.terms a {
+    color: #1d9bf0;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.login-section {
+    margin-top: 40px;
+}
+
+.login-section h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    border: 1px solid #536471;
+    background: transparent;
+    color: #1d9bf0;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.login-button:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+/* Estilos auth */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+}
+
+.logo-section-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.x-login {
+    width: 50px;
+    height: auto;
+}
+
+.form-container {
+    border: 1px solid #000000;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-color: #000000;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.auth-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+.auth-link a {
+    color: #1da1f2;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos profile */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.post-form {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.logout {
+    background-color: #dc3545;
+}
+
+.logout:hover {
+    background-color: #c82333;
+}
