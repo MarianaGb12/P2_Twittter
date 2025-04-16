@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X  - Login</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="form-container">
+            <div class="logo-section-login">
+                <img src="x_logo.png" alt="X Logo" class="x-login">
+            </div>
+            <h2>Inicia Sesión en X</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p class="auth-link">
+                ¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
