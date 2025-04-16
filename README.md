@@ -11,3 +11,15 @@ As a User, I can see only my Posts in the Timeline ordered by the most recent da
 As a User, I can create a Post or delete a Post that I created.
 
 As a User, I can Reply and Like my Posts.
+----------------------------------
+# Clone repository
+> https://github.com/MarianaGb12/P2_Twittter.git
+
+# Enter to folder project
+> cd P2_Twittter
+
+# Install dependencies
+> npm install
+
+# Run app
+> npm run dev
