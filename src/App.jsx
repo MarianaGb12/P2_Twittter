@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/public/LandingPage';
 import Login from './components/public/Login';
 import Register from './components/public/Register';
+import Home from './components/private/Home';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
   );
