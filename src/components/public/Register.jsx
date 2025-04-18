@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/Register.css';
+import '../../styles/Register.css';
 
 function Register() {
   return (
