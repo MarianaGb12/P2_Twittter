@@ -4,6 +4,8 @@ import Login from './components/public/Login';
 import Register from './components/public/Register';
 import Home from './components/private/Home';
 import PrivateRoute from './routes/PrivateRoute';
+import Profile from './components/private/Profile';
+import CreatePost from './components/private/CreatePost'; // 
 import './App.css';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
           </PrivateRoute>
           } />
 
+        <Route path="/profile" element={<Profile />} /> {/*  Ruta a perfil */}
+        <Route path="/create-post" element={<CreatePost />} /> {/*  Ruta para publicar */}
       </Routes>
     </Router>
   );
