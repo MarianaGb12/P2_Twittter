@@ -32,3 +32,7 @@ async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
 export const loginUser = (credentials) => apiRequest('/users/login', 'POST', credentials);
 export const registerUser = (credentials) => apiRequest('/users', 'POST', credentials);
 export const getUserTweets = (token) => apiRequest('/tweets', 'GET', null, token);
+export const createTweet = (content, token) => apiRequest('/tweets', 'POST', { content }, token);
+export const likeTweet = (tweetId, token) => apiRequest('/tweets/likes', 'PUT', { tweetId, like: 1 }, token);
+export const commentTweet = (tweetId, comment, token) => apiRequest('/tweets/comments', 'PUT', { tweetId, comment }, token);
+export const deleteTweet = (tweetId, token) => apiRequest(`/tweets/${tweetId}`, 'DELETE', null, token);
