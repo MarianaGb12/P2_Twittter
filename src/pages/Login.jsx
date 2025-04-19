@@ -21,9 +21,10 @@ function Login() {
               <input type="password" placeholder="Contraseña" />
             </div>
             
-            <button type="submit" className="login-button">
-              Iniciar sesión
-            </button>
+            <Link to="/Profile" className="login-button">
+                Iniciar sesión
+            </Link>
+            
           </form>
           
           <div className="links">
