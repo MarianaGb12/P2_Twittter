@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { loginUser } from '../../services/api';
+import { jwtDecode } from 'jwt-decode';
 import '../../styles/Login.css';
 
 function Login() {
@@ -18,8 +19,10 @@ function Login() {
     try {
       const response = await loginUser({ username, password });
       const { token, name, username: backendUsername } = response.data;
+      const decoded = jwtDecode(token);
+      const userId = decoded.userId; // Decode the JWT token to get user info
       login({ token, 
-        user: {name, username: backendUsername}
+        user: {_id: userId, name, username: backendUsername}
       }); // Save token and user in context
 
       navigate('/home'); // Redirect to home page after successful login

@@ -31,3 +31,4 @@ async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
 
 export const loginUser = (credentials) => apiRequest('/users/login', 'POST', credentials);
 export const registerUser = (credentials) => apiRequest('/users', 'POST', credentials);
+export const getUserTweets = (token) => apiRequest('/tweets', 'GET', null, token);
