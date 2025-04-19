@@ -18,10 +18,11 @@ async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
 
   try {
     const response = await fetch(`${API_URL}${endpoint}`, config);
+    const data = await response.json();
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
     }
-    return await response.json();
+    return data;
   } catch (error) {
     console.error('API request failed:', error);
     throw error;
