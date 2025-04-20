@@ -31,6 +31,12 @@ function Profile() {
         <h1>Hola {user.name}, este es tu Perfil</h1>
         <div className="header-buttons">
           <button
+            onClick={() => navigate('/home')}
+            className="create-post-button"
+          >
+            Home
+          </button>
+          <button
             onClick={() => navigate('/create-post')}
             className="create-post-button"
           >
