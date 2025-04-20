@@ -2,6 +2,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getUserTweets } from '../../services/api';
+import TweetItem from './TweetItem';
 
 function Home() {
   const { user, token, logout } = useAuth();
@@ -13,17 +14,10 @@ function Home() {
   const fetchTweets = async () => {
     try {
       const response = await getUserTweets(token);
-      const tweets = response.data || [];
-      
-      // Filter tweets to only include those from the logged-in user
-      const userTweets = tweets.filter((tweet) => tweet.user._id === user._id);
-  
-      // Sort tweets by createdAt in descending order
-      const ordered = userTweets.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
-  
-      setTweets(ordered);
+      const allTweets = response.data || [];
+      // sort tweets by createdAt date in descending order
+      allTweets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setTweets(allTweets);
     } catch (err) {
       setError(err.message || 'Error al cargar tweets');
     } finally {
@@ -37,16 +31,16 @@ function Home() {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate('/login');
   };
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h2>Hola, {user?.name} 👋</h2>
+      <h2>Bienvenid@ a twitter</h2>
 
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => navigate('/profile')}>Mi perfil</button>
-        <button onClick={() => navigate('/create')}>Crear tweet</button>
+        <button onClick={() => navigate('/create-post')}>Crear tweet</button>
         <button onClick={handleLogout}>Cerrar sesión</button>
       </div>
 
@@ -57,16 +51,17 @@ function Home() {
       ) : error ? (
         <p style={{ color: 'red' }}>{error}</p>
       ) : tweets.length === 0 ? (
-        <p>No has publicado ningún tweet.</p>
+        <p>No hay publicaciones aún.</p>
       ) : (
-        <ul>
+        <div>
           {tweets.map((tweet) => (
-            <li key={tweet._id}>
-              <p>{tweet.content}</p>
-              <small>{new Date(tweet.createdAt).toLocaleString()}</small>
-            </li>
+            <TweetItem
+              key={tweet._id}
+              tweet={tweet}
+              refresh={fetchTweets}
+            />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

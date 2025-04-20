@@ -42,8 +42,11 @@ function TweetItem({ tweet, onDelete, refresh }) {
   return (
     <div className="post">
       <div className="post-content">
+        <p><strong>@{tweet.user.username}</strong></p>
         <p>{tweet.content}</p>
+        <small>{new Date(tweet.createdAt).toLocaleString()}</small>
       </div>
+
       <div className="post-actions">
         <button onClick={handleLike} className="like-button">
           <span className="icon">❤️</span>
