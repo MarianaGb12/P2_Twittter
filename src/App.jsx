@@ -1,18 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Profile from './pages/Profile';
-import CreatePost from './pages/CreatePost'; // 
+import LandingPage from './components/public/LandingPage';
+import Login from './components/public/Login';
+import Register from './components/public/Register';
+import Home from './components/private/Home';
+import PrivateRoute from './routes/PrivateRoute';
+import Profile from './components/private/Profile';
+import CreatePost from './components/private/CreatePost'; // 
 import './App.css';
 
 function App() {
   return (
     <Router>
       <Routes>
+
+        {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Private Routes */}
+        <Route path="/home" element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+          } />
+
         <Route path="/profile" element={<Profile />} /> {/*  Ruta a perfil */}
         <Route path="/create-post" element={<CreatePost />} /> {/*  Ruta para publicar */}
       </Routes>
