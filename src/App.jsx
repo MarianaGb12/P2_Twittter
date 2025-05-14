@@ -24,9 +24,16 @@ function App() {
             <Home />
           </PrivateRoute>
           } />
-
-        <Route path="/profile" element={<Profile />} /> {/*  Ruta a perfil */}
-        <Route path="/create-post" element={<CreatePost />} /> {/*  Ruta para publicar */}
+        <Route path="/profile" element={
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+          } />
+        <Route path="/create-post" element={
+          <PrivateRoute>
+            <CreatePost />
+          </PrivateRoute>
+          } />
       </Routes>
     </Router>
   );
