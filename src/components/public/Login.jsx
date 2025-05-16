@@ -60,7 +60,7 @@ function Login() {
               />
             </div>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p data-testid="error-message" style={{ color: 'red' }}>{error}</p>}
             
             <button type="submit" className="login-button">
               Iniciar sesión

@@ -6,10 +6,10 @@ import '../../styles/Register.css';
 function Register() {
   const [form, setForm] = useState({
     name: '',
-    phone: '',
+    username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    passwordConfirmation: ''
   });
 
   const [error, setError] = useState('');
@@ -22,13 +22,37 @@ function Register() {
     });
   };
 
+  const validateForm = () => {
+    if (!form.name || !form.username || !form.email || !form.password || !form.passwordConfirmation) {
+      setError('Todos los campos son requeridos');
+      return false;
+    }
+
+    if (form.password !== form.passwordConfirmation) {
+      setError('Las contraseñas no coinciden');
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    if (!validateForm()) {
+      return;
+    }
+
     try {
-      await registerUser(form);
-      navigate('/login'); // Redirect to login page after successful registration
+      await registerUser({
+        name: form.name,
+        username: form.username,
+        email: form.email,
+        password: form.password,
+        passwordConfirmation: form.passwordConfirmation
+      });
+      navigate('/login');
     } catch (err) {
       setError(err.message || 'Error al registrarse');
     }
@@ -45,62 +69,61 @@ function Register() {
           <h1>Crear tu cuenta</h1>
           
           <form onSubmit={handleSubmit}>
+            {error && <p data-testid="error-message" style={{ color: 'red' }}>{error}</p>}
             <div className="form-group">
               <input
-              type="text"
-              placeholder="Nombre"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
+                type="text"
+                placeholder="Nombre"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
               />
             </div>
             
             <div className="form-group">
               <input
-              type="text"
-              placeholder="Usuario"
-              name="username"
-              value={form.username}
-              onChange={handleChange}
-              required
+                type="text"
+                placeholder="Usuario"
+                name="username"
+                value={form.username}
+                onChange={handleChange}
+                required
               />
             </div>
             
             <div className="form-group">
               <input
-              type="email"
-              placeholder="Correo electrónico"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
+                type="email"
+                placeholder="Correo electrónico"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
               />
             </div>
             
             <div className="form-group">
               <input
-              type="password"
-              placeholder="Contraseña"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              required
+                type="password"
+                placeholder="Contraseña"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                required
               />
             </div>
             
             <div className="form-group">
               <input
-              type="password"
-              placeholder="Confirmar contraseña"
-              name="passwordConfirmation"
-              value={form.passwordConfirmation}
-              onChange={handleChange}
-              required
+                type="password"
+                placeholder="Confirmar contraseña"
+                name="passwordConfirmation"
+                value={form.passwordConfirmation}
+                onChange={handleChange}
+                required
               />
             </div>
-
-            {error && <p style={{ color: 'red' }}>{error}</p>}
             
             <button type="submit" className="register-button">
               Registrarse
