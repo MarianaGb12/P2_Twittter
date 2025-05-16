@@ -1,13 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+/* global global, vi */
+import { describe, it, expect, beforeEach } from 'vitest'
 import { loginUser, registerUser, getUserTweets, createTweet, likeTweet, commentTweet, deleteTweet } from '../services/api'
 
-// Mock de fetch global
 global.fetch = vi.fn()
 
 describe('API Service', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    // Resetear el mock de fetch antes de cada prueba
     fetch.mockReset()
   })
 

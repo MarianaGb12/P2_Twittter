@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { getUserTweets } from '../../services/api';
-import TweetItem from './TweetItem';
-import '../../styles/Profile.css';
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { getUserTweets } from "../../services/api";
+import TweetItem from "./TweetItem";
+import "../../styles/Profile.css";
 
 function Profile() {
   const { token, user, logout } = useAuth();
   const [tweets, setTweets] = useState([]);
   const navigate = useNavigate();
 
-  const fetchTweets = async () => {
+  const fetchTweets = useCallback(async () => {
     try {
       const response = await getUserTweets(token);
       // Filter tweets to only show those created by the logged-in user
       const onlyMine = response.data.filter((t) => t.user._id === user._id);
       setTweets(onlyMine);
     } catch (err) {
-      console.error('Error al cargar tweets:', err);
+      console.error("Error al cargar tweets:", err);
     }
-  };
+  }, [token, user._id]);
 
   useEffect(() => {
     fetchTweets();
-  }, []);
+  }, [fetchTweets]);
 
   return (
     <div className="profile-page">
@@ -31,13 +31,13 @@ function Profile() {
         <h1>Hola {user.name}, este es tu Perfil</h1>
         <div className="header-buttons">
           <button
-            onClick={() => navigate('/home')}
+            onClick={() => navigate("/home")}
             className="create-post-button"
           >
             Home
           </button>
           <button
-            onClick={() => navigate('/create-post')}
+            onClick={() => navigate("/create-post")}
             className="create-post-button"
           >
             Crear Post
@@ -45,7 +45,7 @@ function Profile() {
           <button
             onClick={() => {
               logout();
-              navigate('/login');
+              navigate("/login");
             }}
             className="logout-button"
           >
@@ -59,11 +59,7 @@ function Profile() {
           <p className="no-posts">No tienes publicaciones por ahora.</p>
         ) : (
           tweets.map((tweet) => (
-            <TweetItem
-              key={tweet._id}
-              tweet={tweet}
-              refresh={fetchTweets}
-            />
+            <TweetItem key={tweet._id} tweet={tweet} refresh={fetchTweets} />
           ))
         )}
       </div>

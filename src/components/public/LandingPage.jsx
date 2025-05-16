@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import '../../styles/LandingPage.css';
+import { Link } from "react-router-dom";
+import "../../styles/LandingPage.css";
 
 function LandingPage() {
   return (
@@ -8,7 +8,7 @@ function LandingPage() {
         <div className="logo-section">
           <img src="/x_logo.png" alt="X Logo" className="x-logo" />
         </div>
-        
+
         <div className="content-section">
           <h1>Lo que está pasando ahora</h1>
           <h2>Únete Hoy</h2>
@@ -19,9 +19,9 @@ function LandingPage() {
             </Link>
 
             <div className="terms">
-              Al registrarte, aceptas los 
-              <a href="#">Términos de servicio</a> y la 
-              <a href="#">Política de privacidad</a>, incluida la política de 
+              Al registrarte, aceptas los
+              <a href="#">Términos de servicio</a> y la
+              <a href="#">Política de privacidad</a>, incluida la política de
               <a href="#">Uso de Cookies</a>.
             </div>
 
@@ -38,4 +38,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage; 
+export default LandingPage;

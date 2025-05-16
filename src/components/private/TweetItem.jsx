@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { likeTweet, commentTweet, deleteTweet } from '../../services/api';
-import { useAuth } from '../../hooks/useAuth';
-import '../../styles/Profile.css';
+import { useState } from "react";
+import { likeTweet, commentTweet, deleteTweet } from "../../services/api";
+import { useAuth } from "../../hooks/useAuth";
+import "../../styles/Profile.css";
 
 function TweetItem({ tweet, onDelete, refresh }) {
   const { token, user } = useAuth();
-  const [reply, setReply] = useState('');
+  const [reply, setReply] = useState("");
   const [showReply, setShowReply] = useState(false);
 
   const handleLike = async () => {
@@ -13,19 +13,19 @@ function TweetItem({ tweet, onDelete, refresh }) {
       await likeTweet(tweet._id, token);
       refresh();
     } catch (err) {
-      console.error('Error al dar like:', err);
+      console.error("Error al dar like:", err);
     }
   };
 
   const handleComment = async () => {
-    if (reply.trim() === '') return;
+    if (reply.trim() === "") return;
     try {
       await commentTweet(tweet._id, reply, token);
-      setReply('');
+      setReply("");
       setShowReply(false);
       refresh();
     } catch (err) {
-      console.error('Error al comentar:', err);
+      console.error("Error al comentar:", err);
     }
   };
 
@@ -35,14 +35,16 @@ function TweetItem({ tweet, onDelete, refresh }) {
       onDelete?.(tweet._id);
       refresh();
     } catch (err) {
-      console.error('Error al eliminar tweet:', err);
+      console.error("Error al eliminar tweet:", err);
     }
   };
 
   return (
     <div className="post">
       <div className="post-content">
-        <p><strong>@{tweet.user.username}</strong></p>
+        <p>
+          <strong>@{tweet.user.username}</strong>
+        </p>
         <p>{tweet.content}</p>
         <small>{new Date(tweet.createdAt).toLocaleString()}</small>
       </div>

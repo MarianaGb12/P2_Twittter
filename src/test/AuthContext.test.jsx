@@ -1,9 +1,8 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { render, screen, act } from '@testing-library/react'
 import { AuthProvider, AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 
-// Componente de prueba que usa el contexto
 function TestComponent() {
   const { token, user, isAuthenticated, login, logout } = useContext(AuthContext)
   return (
@@ -55,12 +54,11 @@ describe('AuthContext', () => {
       </AuthProvider>
     )
 
-    // Primero hacemos login
     act(() => {
       screen.getByText('Login').click()
     })
 
-    // Luego hacemos logout
+
     act(() => {
       screen.getByText('Logout').click()
     })
@@ -77,15 +75,14 @@ describe('AuthContext', () => {
       </AuthProvider>
     )
 
-    // Hacemos login
+  
     act(() => {
       screen.getByText('Login').click()
     })
 
-    // Desmontamos el componente
+    
     unmount()
 
-    // Remontamos y verificamos que el estado persiste
     render(
       <AuthProvider>
         <TestComponent />

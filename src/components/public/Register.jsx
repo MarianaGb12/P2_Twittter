@@ -1,35 +1,41 @@
-import { useNavigate, Link } from 'react-router-dom';
-import { useState } from 'react';
-import { registerUser } from '../../services/api';
-import '../../styles/Register.css';
+import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { registerUser } from "../../services/api";
+import "../../styles/Register.css";
 
 function Register() {
   const [form, setForm] = useState({
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
   });
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const validateForm = () => {
-    if (!form.name || !form.username || !form.email || !form.password || !form.passwordConfirmation) {
-      setError('Todos los campos son requeridos');
+    if (
+      !form.name ||
+      !form.username ||
+      !form.email ||
+      !form.password ||
+      !form.passwordConfirmation
+    ) {
+      setError("Todos los campos son requeridos");
       return false;
     }
 
     if (form.password !== form.passwordConfirmation) {
-      setError('Las contraseñas no coinciden');
+      setError("Las contraseñas no coinciden");
       return false;
     }
 
@@ -38,7 +44,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!validateForm()) {
       return;
@@ -50,11 +56,11 @@ function Register() {
         username: form.username,
         email: form.email,
         password: form.password,
-        passwordConfirmation: form.passwordConfirmation
+        passwordConfirmation: form.passwordConfirmation,
       });
-      navigate('/login');
+      navigate("/login");
     } catch (err) {
-      setError(err.message || 'Error al registrarse');
+      setError(err.message || "Error al registrarse");
     }
   };
 
@@ -64,12 +70,16 @@ function Register() {
         <div className="logo-section">
           <img src="/x_logo.png" alt="X Logo" className="x-logo" />
         </div>
-        
+
         <div className="register-form">
           <h1>Crear tu cuenta</h1>
-          
+
           <form onSubmit={handleSubmit}>
-            {error && <p data-testid="error-message" style={{ color: 'red' }}>{error}</p>}
+            {error && (
+              <p data-testid="error-message" style={{ color: "red" }}>
+                {error}
+              </p>
+            )}
             <div className="form-group">
               <input
                 type="text"
@@ -80,7 +90,7 @@ function Register() {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <input
                 type="text"
@@ -91,7 +101,7 @@ function Register() {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <input
                 type="email"
@@ -102,7 +112,7 @@ function Register() {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <input
                 type="password"
@@ -113,7 +123,7 @@ function Register() {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <input
                 type="password"
@@ -124,12 +134,12 @@ function Register() {
                 required
               />
             </div>
-            
+
             <button type="submit" className="register-button">
               Registrarse
             </button>
           </form>
-          
+
           <div className="links">
             <p>
               ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
@@ -141,4 +151,4 @@ function Register() {
   );
 }
 
-export default Register; 
+export default Register;
