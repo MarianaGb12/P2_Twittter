@@ -1,6 +1,6 @@
 /* global global, vi */
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Login from "../components/public/Login";
 import { loginUser } from "../services/api";
@@ -97,13 +97,14 @@ describe("Login Component", () => {
     const submitButton = screen.getByRole("button", {
       name: /iniciar sesión/i,
     });
-    fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(loginUser).toHaveBeenCalledWith({
-        username: "testuser",
-        password: "password123",
-      });
+    await act(async () => {
+      fireEvent.click(submitButton);
+    });
+
+    expect(loginUser).toHaveBeenCalledWith({
+      username: "testuser",
+      password: "password123",
     });
 
     expect(mockLogin).toHaveBeenCalledWith({

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { render, screen, act } from '@testing-library/react'
 import { AuthProvider, AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
@@ -19,6 +19,14 @@ function TestComponent() {
 }
 
 describe('AuthContext', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  afterEach(() => {
+    localStorage.clear()
+  })
+
   it('should provide initial state', () => {
     render(
       <AuthProvider>
@@ -58,7 +66,6 @@ describe('AuthContext', () => {
       screen.getByText('Login').click()
     })
 
-
     act(() => {
       screen.getByText('Logout').click()
     })
@@ -69,18 +76,20 @@ describe('AuthContext', () => {
   })
 
   it('should persist auth state in localStorage', () => {
+    localStorage.clear()
     const { unmount } = render(
       <AuthProvider>
         <TestComponent />
       </AuthProvider>
     )
 
-  
     act(() => {
       screen.getByText('Login').click()
     })
 
-    
+    expect(localStorage.getItem('token')).toBe('test-token')
+    expect(localStorage.getItem('user')).toBe(JSON.stringify({ name: 'Test User' }))
+
     unmount()
 
     render(

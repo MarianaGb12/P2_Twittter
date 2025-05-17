@@ -12,13 +12,23 @@ vi.mock('../config/env', () => ({
 global.fetch = vi.fn()
 
 // Setup global localStorage mock
-const localStorageMock = {
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
-  clear: vi.fn(),
-}
-global.localStorage = localStorageMock
+const localStorageMock = (() => {
+  let store = {};
+  return {
+    getItem: vi.fn((key) => store[key] || null),
+    setItem: vi.fn((key, value) => {
+      store[key] = value;
+    }),
+    removeItem: vi.fn((key) => {
+      delete store[key];
+    }),
+    clear: vi.fn(() => {
+      store = {};
+    }),
+  };
+})();
+
+global.localStorage = localStorageMock;
 
 // Setup global window mock
 global.window = {
