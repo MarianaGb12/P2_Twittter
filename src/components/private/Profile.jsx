@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { getUserTweets } from "../../services/api";
 import TweetItem from "./TweetItem";
+import { FeatureButton } from "../common/FeatureButton";
 import "../../styles/Profile.css";
 
 function Profile() {
@@ -30,18 +31,12 @@ function Profile() {
       <div className="profile-header">
         <h1>Hola {user.name}, este es tu Perfil</h1>
         <div className="header-buttons">
-          <button
-            onClick={() => navigate("/home")}
-            className="create-post-button"
-          >
+          <FeatureButton to="/home" className="create-post-button">
             Home
-          </button>
-          <button
-            onClick={() => navigate("/create-post")}
-            className="create-post-button"
-          >
+          </FeatureButton>
+          <FeatureButton to="/create-post" className="create-post-button">
             Crear Post
-          </button>
+          </FeatureButton>
           <button
             onClick={() => {
               logout();

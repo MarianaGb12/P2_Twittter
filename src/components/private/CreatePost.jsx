@@ -50,8 +50,8 @@ function CreatePost() {
               Publicar
             </button>
           ) : (
-            <a 
-              href="/profile" 
+            <a
+              href="/profile"
               className="submit-link"
               onClick={(e) => {
                 e.preventDefault();
