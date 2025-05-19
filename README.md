@@ -23,3 +23,6 @@ As a User, I can Reply and Like my Posts.
 
 # Run app
 > npm run dev
+
+# Run Test
+> npm run test
