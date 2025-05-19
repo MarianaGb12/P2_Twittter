@@ -6,7 +6,7 @@ export function FeatureButton({ to, children, className }) {
 
   if (showButton) {
     return (
-      <button className={className} onClick={() => window.location.href = to}>
+      <button className={className} onClick={() => (window.location.href = to)}>
         {children}
       </button>
     );
@@ -17,4 +17,4 @@ export function FeatureButton({ to, children, className }) {
       {children}
     </Link>
   );
-} 
+}
