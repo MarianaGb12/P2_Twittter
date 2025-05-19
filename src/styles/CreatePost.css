@@ -62,3 +62,23 @@
 .tweet-button:hover {
   background-color: #0d8ddb;
 }
+
+.submit-link {
+  padding: 8px 16px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.submit-link:hover {
+  background-color: #1991db;
+}
+
+.submit-link:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
